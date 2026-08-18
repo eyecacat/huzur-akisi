@@ -1,0 +1,28 @@
+# --- ORTAM VE GIZLI ANAHTARLAR (asla commit edilmez) ---
+.env
+.env.local
+*.env
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# --- Node / Frontend ---
+node_modules/
+dist/
+build/
+.vite/
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Loglar ---
+*.log
