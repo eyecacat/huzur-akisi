@@ -1,0 +1,95 @@
+/* ============================================================
+   HUZUR AKIŞI — TASARIM SİSTEMİ
+
+   Konsept: "Gün batımı sonrası gökyüzü" — bir günün en sakinleştirici
+   anı. Sosyal medyanın genelde tercih ettiği keskin, alarm-mavisi
+   (#1877F2 tarzı) paletlerin tam zıttı: yumuşak, alacakaranlık
+   tonları. Akış metaforu (gradyan geçişler, yumuşak dalga çizgisi)
+   sistemin "akışı yeniden şekillendirme" fikrini görsel olarak
+   destekler.
+   ============================================================ */
+
+:root {
+  /* --- Renk paleti: alacakaranlık gökyüzü --- */
+  --renk-zemin: #FAF7F2;           /* sıcak, kağıt gibi kirli beyaz */
+  --renk-zemin-yukseltilmis: #FFFFFF;
+  --renk-mürekkep: #23202B;         /* neredeyse siyah, mor alt tonlu */
+  --renk-mürekkep-soluk: #6B6577;   /* ikincil metin */
+  --renk-cizgi: #E4DFD6;            /* ince ayraç çizgileri */
+
+  --renk-alacakaranlik-1: #7C6FE0;  /* ana marka moru */
+  --renk-alacakaranlik-2: #E0A458;  /* gün batımı turuncusu — vurgu */
+  --renk-gece-mavisi: #3A3564;      /* koyu aksan, başlıklar için */
+
+  --renk-sakin-bg: #EFEAFB;         /* pozitif/sakin durum arkaplanı */
+  --renk-sakin-metin: #4B3F8F;
+  --renk-sakin-kenar: #C9BEF0;
+
+  --renk-notr-bg: #F1EFE8;
+  --renk-notr-metin: #4A463D;
+  --renk-notr-kenar: #D9D3C4;
+
+  --renk-uyari-bg: #FBEEE4;         /* olumsuz/kaygılı durum — ateş değil, kum */
+  --renk-uyari-metin: #8A4B23;
+  --renk-uyari-kenar: #EAC9A6;
+
+  --renk-toksik-rozet-bg: #F7E2DC;
+  --renk-toksik-rozet-metin: #9A3E2A;
+
+  /* --- Tipografi --- */
+  --font-baslik: 'Fraunces', Georgia, serif;
+  --font-govde: 'Inter', -apple-system, sans-serif;
+
+  /* --- Yarıçap / gölge --- */
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 28px;
+  --golge-yumusak: 0 2px 12px rgba(58, 53, 100, 0.06);
+  --golge-belirgin: 0 8px 30px rgba(58, 53, 100, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--renk-zemin);
+  color: var(--renk-mürekkep);
+  font-family: var(--font-govde);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--renk-alacakaranlik-1);
+  color: white;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2.5px solid var(--renk-alacakaranlik-1);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
