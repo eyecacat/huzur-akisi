@@ -38,7 +38,7 @@ logger = logging.getLogger("huzur_akisi.duygu_analizi")
 # --- Yapilandirma: API anahtari SADECE ortam degiskeninden okunur ---
 API_ANAHTARI = os.getenv("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")
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
-MODEL_ADI = os.getenv("LLM_MODEL", "meta-llama/llama-3.1-8b-instruct:free")
+MODEL_ADI = os.getenv("LLM_MODEL", "nvidia/nemotron-3.5-lightning:free")
 
 # OpenRouter'in istegi dogru kaynaktan geldigini dogrulamasi icin (opsiyonel ama tavsiye edilir)
 SITE_URL = os.getenv("SITE_URL", "https://github.com/eyecacat/huzur-akisi")
