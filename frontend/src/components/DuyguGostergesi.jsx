@@ -1,26 +1,43 @@
 import React from "react";
 
-const RENKLER = {
-  pozitif: { bg: "#eaf3de", text: "#173404", border: "#639922" },
-  notr: { bg: "#f1efe8", text: "#2c2c2a", border: "#888780" },
-  olumsuz: { bg: "#faece7", text: "#4a1b0c", border: "#d85a30" },
-  kaygili: { bg: "#faece7", text: "#4a1b0c", border: "#d85a30" },
+const DUYGU_ETIKET = {
+  pozitif: "Keyifli görünüyorsun",
+  notr: "Sakin bir tempoda görünüyorsun",
+  olumsuz: "Bugün biraz yorucu geçiyor gibi",
+  kaygili: "Biraz gergin görünüyorsun",
+};
+
+const RENK_GRUBU = {
+  pozitif: "sakin",
+  notr: "notr",
+  olumsuz: "uyari",
+  kaygili: "uyari",
 };
 
 export default function DuyguGostergesi({ analiz }) {
-  const renk = RENKLER[analiz.duygu] || RENKLER.notr;
-  const olumsuzMu = analiz.duygu === "olumsuz" || analiz.duygu === "kaygili";
+  const grup = RENK_GRUBU[analiz.duygu] || "notr";
 
   return (
-    <div style={{ background: renk.bg, border: `1px solid ${renk.border}`, borderRadius: 12, padding: "12px 16px", marginBottom: 12 }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <span style={{ fontWeight: 500, fontSize: 14, color: renk.text }}>Ruh hâli: {analiz.duygu}</span>
-        <span style={{ fontSize: 13, color: renk.text }}>skor: {analiz.skor}/100</span>
+    <div
+      style={{
+        background: `var(--renk-${grup}-bg)`,
+        border: `1px solid var(--renk-${grup}-kenar)`,
+        borderRadius: "var(--radius-m)",
+        padding: "18px 22px",
+        marginBottom: 20,
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+        <span style={{ fontFamily: "var(--font-baslik)", fontSize: 18, fontStyle: "italic", color: `var(--renk-${grup}-metin)` }}>
+          {DUYGU_ETIKET[analiz.duygu] || "Analiz edildi"}
+        </span>
+        <span style={{ fontSize: 12, color: `var(--renk-${grup}-metin)`, opacity: 0.75, whiteSpace: "nowrap" }}>
+          güven skoru {analiz.skor}/100
+        </span>
       </div>
-      <p style={{ fontSize: 13, color: renk.text, margin: "4px 0 0" }}>{analiz.aciklama}</p>
-      {olumsuzMu && analiz.mola_onerisi && (
-        <p style={{ fontSize: 13, color: renk.text, margin: "8px 0 0", fontStyle: "italic" }}>
-          💬 {analiz.mola_onerisi}
+      {analiz.aciklama && (
+        <p style={{ fontSize: 13, color: `var(--renk-${grup}-metin)`, margin: "6px 0 0", opacity: 0.85 }}>
+          {analiz.aciklama}
         </p>
       )}
     </div>
