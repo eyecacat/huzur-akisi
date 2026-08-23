@@ -1,0 +1,24 @@
+# Render.com Blueprint - backend'i tek tıkla deploy etmek icin.
+# Render Dashboard > New > Blueprint ile bu dosyayi iceren repo baglanabilir.
+#
+# ONEMLI: OPENROUTER_API_KEY degiskeni burada YAZILMAZ. Deploy sonrasi
+# Render Dashboard > Environment sekmesinden elle veya "sync: false" olan
+# bir secret olarak eklenmelidir.
+
+services:
+  - type: web
+    name: huzur-akisi-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: meta-llama/llama-3.1-8b-instruct:free
+      - key: CORS_ORIGINS
+        sync: false
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "30"
