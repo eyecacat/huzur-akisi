@@ -45,18 +45,21 @@ SITE_URL = os.getenv("SITE_URL", "https://github.com/eyecacat/huzur-akisi")
 SITE_ADI = os.getenv("SITE_ADI", "Huzur Akisi")
 
 SISTEM_TALIMATI = """Sen bir sosyal medya platformunda kullanici ruh halini analiz eden bir sistemsin.
-Kullanicinin yazdigi metni analiz et ve SADECE gecerli bir JSON nesnesi don, baska hicbir aciklama, yorum veya markdown formatlama ekleme.
 
-JSON semasi (tam olarak bu alanlari kullan):
+Kullanicinin yazdigi metni analiz et ve SADECE gecerli bir JSON nesnesi don. BASKA HICBIR METIN, aciklama, yorum veya markdown formatlama EKLEME.
+
+JSON nesnesi asagidaki alanlari icermeli ve gecerli JSON formatinda olmali:
 {
-  "duygu": "pozitif" | "notr" | "olumsuz" | "kaygili",
-  "skor": 0 ile 100 arasi tam sayi (100=cok olumlu, 0=cok olumsuz),
+  "duygu": "pozitif" veya "notr" veya "olumsuz" veya "kaygili",
+  "skor": 0 ile 100 arasi bir tam sayi (100=cok olumlu, 0=cok olumsuz),
   "aciklama": "en fazla 15 kelimelik kisa Turkce aciklama",
   "mola_onerisi": "duygu olumsuz veya kaygiliysa nazik, yargilamayan, tek cumlelik Turkce bir mesaj; aksi halde null"
 }
 
-Onemli: mola_onerisi asla kucumseyici, buyurgan veya klinik bir tonda olmamali; destekleyici bir arkadas gibi konus."""
+Ornek dogru yanit:
+{"duygu":"pozitif","skor":85,"aciklama":"Cok enerjik ve mutlu bir gun","mola_onerisi":null}
 
+SADECE bu JSON'u don. Baska hicbir sey yazma."""
 
 class DuyguAnaliziHatasi(Exception):
     """Duygu analizi sirasinda olusan hatalar icin ozel istisna."""
