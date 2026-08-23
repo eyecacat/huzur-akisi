@@ -64,7 +64,7 @@ class DuyguAnaliziHatasi(Exception):
 
 
 def _api_anahtari_kontrol():
-    if not API_ANAHTARI or API_ANAHTARI == "xxxxxx":
+    if not API_ANAHTARI or API_ANAHTARI == "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":
         raise DuyguAnaliziHatasi(
             "OPENROUTER_API_KEY tanimli degil veya hala placeholder degerinde. "
             "Yerel gelistirmede .env dosyanizi, canli ortamda platform "
